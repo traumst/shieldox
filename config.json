@@ -6,6 +6,6 @@
   "weatherAPI": {
     "endpoint": "http://api.openweathermap.org/data/2.5/weather",
     "key": "f61945e2cc608968a14b462ac39a1e57",
-    "maxCities": 5
+    "maxCities": 0
   }
 }

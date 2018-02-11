@@ -3,9 +3,6 @@ let axios = require('axios');
 // 3rd Party API data
 let { countriesAPI, weatherAPI } = require('./../config.json');
 
-// let weatherApiKey = 'f61945e2cc608968a14b462ac39a1e57'; // 1
-// let weatherApiKey = 'd980d988ade4f66c0cee674b7eb75e22'; // 2
-
 // Countries
 async function getCountries(continent) {
 	let requestUrl = `${countriesAPI.endpoint}/${continent}?fields=${countriesAPI.fields.join(';')}`;
