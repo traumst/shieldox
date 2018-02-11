@@ -1,4 +1,5 @@
-let app         = require("express")();
+let express     = require("express");
+let app         = express();
 let cors        = require('cors');
 let bodyParser  = require('body-parser');
 
@@ -13,5 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // Mapping route to router
 app.use(apiPrefix, router);
+// Serve index.html
+app.use('/', express.static('client'));
 
 app.listen(port, () => console.log(`Server is listening on port ${port}`));

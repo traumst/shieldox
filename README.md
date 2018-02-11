@@ -20,12 +20,9 @@ git clone https://github.com/traumst/shieldox.git AlexLitvakTask \
 
 ## Runnnig the app locally
 
-To start the app run `npm start` 
+To start the app run `npm start`. This will launch the webserver.
 
-You should see `Server is listening on port 3000
-` displayed in the terminal window, signifying that local server is running and API shoud be available. 
-
-To check functionality out you can use `index.html` located in the root folder or a tool like Postman.
+Go to [http://localhost:3000](http://localhost:3000) to see the basic index.html file.
 
 ## Tests
 
