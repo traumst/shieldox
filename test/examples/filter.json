@@ -1,0 +1,8 @@
+{
+  "country": "Afghanistan",
+  "capital": "Kabul",
+  "weather": {
+    "forecast": "Clouds",
+    "temperature": 5
+  }
+}
