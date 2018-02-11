@@ -72,8 +72,8 @@ async function getAndFilter({ continent, filter }) {
 	});
 
 	// Apply filter by Forecast and Temperature
-	return countriesMergedWithWeather.filter(x =>
-		 x.weather.forecast.toLowerCase() === filter.weather.type.toLowerCase()
+	return countriesMergedWithWeather.filter(x => x.weather
+	   && x.weather.forecast.toLowerCase() === filter.weather.type.toLowerCase()
 		 && x.weather.temperature >= filter.temp.min
 		 && x.weather.temperature <= filter.temp.max);
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shieldox API</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <style>
+        .dynamic {
+            height: auto;
+            max-height: 200px;
+            overflow: auto;
+            width: fit-content;
+            border: black solid 1px;
+            padding: 10px;
+        }
+
+        textarea {
+            height: 13rem;
+            width: 14rem;
+            /*max-height: 200px;*/
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Shiledox API</h1>
+
+    <h2>Countries</h2>
+    <input id="continent" type="text" value="Asia">
+    <input type="button" value="Request Countries" onclick="getCountries()">
+    <div id="countries" class="dynamic">
+        <pre>Placeholder for Countries data</pre>
+    </div>
+    <br />
+
+    <h2>Weather</h2>
+    <input id="capital" type="text" value="London">
+    <input type="button" value="Request Weather" onclick="getWeather()">
+    <div id="weather" class="dynamic">
+        <pre>Placeholder for Weather data</pre>
+    </div>
+    <br />
+
+
+    <h2>Filter</h2>
+    <textarea id="filterJson">
+{
+  "type": "Asia",
+  "filter": {
+    "temp": {
+      "min": 2,
+      "max": 35
+    },
+    "weather": {
+      "type": "clouds"
+    }
+  }
+}
+    </textarea>
+    <input type="button" value="Request Filtered" onclick="getFiltered()">
+    <div id="filter" class="dynamic">
+        <pre>Placeholder for Filter data</pre>
+    </div>
+    <br />
+    <script>
+        var endpoint = 'http://localhost:3000/api/v1/';
+	    function getCountries() {
+		    axios.get(endpoint + 'countries/' + encodeURIComponent(document.querySelector('#continent').value))
+		     .then(function(response) {
+			     document.querySelector('#countries > pre').innerHTML = JSON.stringify(response.data, null, 4);
+		     })
+             .catch(function(err) {
+	             document.querySelector('#countries > pre').innerHTML = 'Failed to retrieve data';
+             });
+	    }
+
+	    function getWeather() {
+		    axios.get(endpoint + '/weather/' + encodeURIComponent(document.querySelector('#capital').value))
+		     .then(function(response) {
+			     document.querySelector('#weather > pre').innerHTML = JSON.stringify(response.data, null, 4);
+		     })
+             .catch(function(err) {
+                 document.querySelector('#weather > pre').innerHTML = 'Failed to retrieve data';
+             });
+	    }
+
+	    function getFiltered() {
+            axios.post(endpoint + '/filter',
+             JSON.parse(document.querySelector('#filterJson').value))
+             .then(function(response) {
+                 document.querySelector('#filter > pre').innerHTML = JSON.stringify(response.data, null, 4);
+             })
+             .catch(function(err) {
+	             document.querySelector('#filter > pre').innerHTML = 'Failed to retrieve data';
+             });
+        }
+    </script>
+</body>
+</html>

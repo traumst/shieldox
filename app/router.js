@@ -14,7 +14,7 @@ apiRouter.get('/countries/:continent*?', async (req, res) => {
 		res.json(await getCountries(continent));
 	} catch(err) {
 		console.error(err.message);
-		res.sendStatus(500);
+		res.sendStatus(404);
 	}
 });
 
@@ -25,7 +25,7 @@ apiRouter.get('/weather/:capital', async (req, res) => {
 		res.json(await getWeather(capital));
 	} catch(err) {
 		console.error(err.message);
-		res.sendStatus(500);
+		res.sendStatus(404);
 	}
 });
 
@@ -36,7 +36,7 @@ apiRouter.post('/filter', async (req, res) => {
 		res.json(await getAndFilter({ continent: type, filter }));
 	} catch(err) {
 		console.error(err.message);
-		res.sendStatus(500);
+		res.sendStatus(404);
 	}
 });
 
